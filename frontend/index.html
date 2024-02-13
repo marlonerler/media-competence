@@ -1,0 +1,194 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Media Literacy | Interactive Presentation</title>
+
+    <link rel="stylesheet" href="base.css" />
+    <link rel="stylesheet" href="customization.css" />
+
+    <script src="navigation.js" defer></script>
+    <script src="communication.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <span class="product">Media Literacy</span>
+      <span class="names">By Florian, Arne, Mark, and Marlon</span>
+    </header>
+
+    <main id="loading" class="hero" visible>
+      <h1>Just a second...</h1>
+    </main>
+
+    <main id="sign-up" class="hero">
+      <h1>Hi there!</h1>
+      <p class="secondary">
+        Please create an account to continue.<br />
+        None of your data will be stored permanently.
+      </p>
+      <br />
+      <label>
+        E-mail
+        <input id="sign-up-email" placeholder="janedoe@gmail.com" />
+      </label>
+      <hr />
+      <label>
+        Password
+        <input
+          id="sign-up-password-1"
+          placeholder="***************"
+          type="password"
+        />
+      </label>
+      <label>
+        Confirm password
+        <input
+          id="sign-up-password-2"
+          placeholder="***************"
+          type="password"
+        />
+      </label>
+      <br />
+      <div class="justify right">
+        <button class="ghost" onclick="show('sign-in')">I already have an account</button>
+        <button class="primary">Sign up</button>
+      </div>
+    </main>
+
+    <main id="sign-in" class="hero">
+      <h1>Welcome back!</h1>
+      <label>
+        E-mail
+        <input id="sign-up-email" placeholder="janedoe@gmail.com" />
+      </label>
+      <label>
+        Password
+        <input
+          id="sign-up-password-1"
+          placeholder="***************"
+          type="password"
+        />
+      </label>
+      <br />
+      <div class="justify right">
+        <button class="ghost" onclick="show('sign-up')">I don't have an account</button>
+        <button class="primary">Sign in</button>
+      </div>
+    </main>
+
+    <main id="basic-content" class="hero">
+      <h1 id="basic-content-headline">Be right back</h1>
+      <p id="basic-content-body" class="secondary">Just one second...</p>
+    </main>
+
+    <main id="tiles">
+      <h1 id="tile-headline">Look at my tiles!</h1>
+      <div id="tile-body" class="grid">
+        <div class="tile">
+          <h2>This is a tile.</h2>
+          <p>And some text could go here.</p>
+        </div>
+        <div class="tile">
+          <h2>This is a tile.</h2>
+          <p>And some text could go here.</p>
+        </div>
+        <div class="tile">
+          <h2>This is a tile.</h2>
+          <p>And some text could go here.</p>
+        </div>
+        <div class="tile">
+          <h2>This is a tile.</h2>
+          <p>And some text could go here.</p>
+        </div>
+        <div class="tile">
+          <h2>This is a tile.</h2>
+          <p>And some text could go here.</p>
+        </div>
+        <div class="tile">
+          <h2>This is a tile.</h2>
+          <p>And some text could go here.</p>
+        </div>
+        <div class="tile">
+          <h2>This is a tile.</h2>
+          <p>And some text could go here.</p>
+        </div>
+      </div>
+    </main>
+
+    <main id="quotes" class="hero">
+      <p id="quote-body">
+        Whereas recognition of the inherent dignity and of the equal and
+        inalienable rights of all members of the human family is the foundation
+        of freedom, justice and peace in the world
+      </p>
+      <p id="quote-task" class="secondary">Perhaps do something with this</p>
+      <hr />
+      <div id="quote-solution-grid" class="grid">
+        <div class="tile clickable selected">
+          <h2>This is a tile.</h2>
+          <p>And some text could go here.</p>
+        </div>
+        <div class="tile clickable">
+          <h2>This is a tile.</h2>
+          <p>And some text could go here.</p>
+        </div>
+      </div>
+      <hr />
+      <div class="justify right">
+        <button class="primary">Done</button>
+      </div>
+    </main>
+
+    <main id="summary">
+      <p>
+        None of this data is being stored permanently.<br />
+        Your passwords were never visilbe to anyone.
+      </p>
+      <hr />
+      <h2>E-Mails</h2>
+      <div id="email-grid" class="grid">
+        <div class="tile">
+          <p class="code-01">ja******@gmail.com</p>
+        </div>
+        <div class="tile">
+          <p class="code-01">ja******@gmail.com</p>
+        </div>
+        <div class="tile">
+          <p class="code-01">ja******@gmail.com</p>
+        </div>
+      </div>
+      <hr />
+      <h2>Password strength</h2>
+      <div id="password-grid" class="grid">
+        <div class="tile">
+          <h2>Length</h2>
+          <p class="secondary">Passwords longer than 12 characters</p>
+          <div class="meter-track">
+            <div class="meter-bar" style="width: 60%"></div>
+          </div>
+        </div>
+        <div class="tile">
+          <h2>Numbers</h2>
+          <p class="secondary">Passwords containing at least one number</p>
+          <div class="meter-track">
+            <div class="meter-bar" style="width: 40%"></div>
+          </div>
+        </div>
+        <div class="tile">
+          <h2>Symbols</h2>
+          <p class="secondary">Passwords containing at least one symbol</p>
+          <div class="meter-track">
+            <div class="meter-bar" style="width: 90%"></div>
+          </div>
+        </div>
+        <div class="tile">
+          <h2>No sequences</h2>
+          <p class="secondary">Passwords containing no sequences</p>
+          <div class="meter-track">
+            <div class="meter-bar" style="width: 10%"></div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
