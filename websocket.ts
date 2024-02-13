@@ -10,6 +10,9 @@ export function handleWebSocket(ws: WebSocket, data: Session): void {
     console.error("no session");
     return;
   }
+  if (data.username) {
+    ws.send(`sign-in\nok\n${Users.users.get(data.username)?.alias}`);
+  }
 
   ws.on("message", async (message) => {
     const [channel, ...rest] = Utility.parseMessage(message);

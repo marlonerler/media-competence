@@ -112,7 +112,7 @@ function handleSignInResponse(rest) {
     case "err-password":
       showText(
         "err-sign-in",
-        "Double-check your username and password"
+        "Double-check your password"
       );
       return navTo("sign-in");
     case "err":
