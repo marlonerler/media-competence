@@ -1,0 +1,21 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input id="i1" />
+    <button onclick="send()">Send</button>
+  </body>
+  <script>
+    const addr = `ws://${window.location.hostname}:${window.location.port}`;
+    const ws = new WebSocket(addr);
+    ws.onopen = () => console.log("open");
+
+    ws.onmessage = (data) => console.log(data.data);
+
+    const getText = () => document.getElementById("i1").value;
+    const send = () => ws.send(getText());
+  </script>
+</html>
