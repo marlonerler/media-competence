@@ -8,6 +8,27 @@
   }
 }
 
+@keyframes shake {
+  0% {
+    transform: translateX(2rem);
+  }
+  10% {
+    transform: translateX(-1.8rem);
+  }
+  20% {
+    transform: translateX(1.6rem);
+  }
+  40% {
+    transform: translateX(-1.2rem);
+  }
+  60% {
+    transform: translateX(0.6rem);
+  }
+  90% {
+    transform: translateX(-0.2rem);
+  }
+}
+
 @media (prefers-reduced-motion) {
   * {
     animation: none !important;
@@ -17,6 +38,10 @@
 
 main {
   animation: slide-up 0.5s;
+}
+
+.error-text {
+  animation: shake .3s;
 }
 
 /*
@@ -276,6 +301,13 @@ body {
   font-family: IBM Plex Sans;
 }
 
+.error-text {
+  color: var(--text-error);
+  font-size: .8rem;
+  display: block;
+  margin-bottom: var(--spacing-06);
+}
+
 .code-01 {
   font-family: IBM Plex Mono;
   size: 12px;
@@ -446,6 +478,7 @@ button.ghost:active {
 
 input,
 select {
+  color: var(--text-primary);
   background-color: var(--field-01);
 }
 
@@ -537,4 +570,12 @@ main.hero {
 }
 .justify.right {
   justify-content: right;
+}
+
+/*
+  OTHER
+*/
+
+[hidden] {
+  display: none;
 }

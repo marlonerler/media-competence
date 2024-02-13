@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="base.css" />
     <link rel="stylesheet" href="customization.css" />
 
-    <script src="navigation.js" defer></script>
+    <script src="utlility.js" defer></script>
     <script src="communication.js" defer></script>
   </head>
   <body>
@@ -15,6 +15,22 @@
       <span class="product">Media Literacy</span>
       <span class="names">By Florian, Arne, Mark, and Marlon</span>
     </header>
+
+    <main id="welcome" class="hero">
+      <h1 id="welcome-heading">You're in!</h1>
+      <p>
+        You're in!<br>
+        This page will be updated automatically.
+      </p>
+    </main>
+
+    <main id="error" class="hero">
+      <h1>Sorry about that.</h1>
+      <p>
+        Something went wrong connecting to the server.<br />
+        Consider updating your browser.
+      </p>
+    </main>
 
     <main id="loading" class="hero" visible>
       <h1>Just a second...</h1>
@@ -30,6 +46,11 @@
       <label>
         E-mail
         <input id="sign-up-email" placeholder="janedoe@gmail.com" />
+      </label>
+      <span hidden class="error-text" id="err-sign-up-email"></span>
+      <label>
+        Name
+        <input id="sign-up-alias" placeholder="Jane Doe" />
       </label>
       <hr />
       <label>
@@ -48,31 +69,38 @@
           type="password"
         />
       </label>
+      <span hidden class="error-text" id="err-sign-up-passwords"></span>
       <br />
       <div class="justify right">
-        <button class="ghost" onclick="show('sign-in')">I already have an account</button>
-        <button class="primary">Sign up</button>
+        <button class="ghost" onclick="navTo('sign-in')">
+          I already have an account
+        </button>
+        <button class="primary" onclick="signUp()">Sign up</button>
       </div>
+      <span hidden class="error-text" id="err-sign-up-other"></span>
     </main>
 
     <main id="sign-in" class="hero">
       <h1>Welcome back!</h1>
       <label>
         E-mail
-        <input id="sign-up-email" placeholder="janedoe@gmail.com" />
+        <input id="sign-in-email" placeholder="janedoe@gmail.com" />
       </label>
       <label>
         Password
         <input
-          id="sign-up-password-1"
+          id="sign-in-password"
           placeholder="***************"
           type="password"
         />
       </label>
+      <span hidden class="error-text" id="err-sign-in">Please try again</span>
       <br />
       <div class="justify right">
-        <button class="ghost" onclick="show('sign-up')">I don't have an account</button>
-        <button class="primary">Sign in</button>
+        <button class="ghost" onclick="navTo('sign-up')">
+          I don't have an account
+        </button>
+        <button class="primary" onclick="signIn()">Sign in</button>
       </div>
     </main>
 

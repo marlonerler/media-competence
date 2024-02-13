@@ -1,7 +1,11 @@
+import * as Users from "./users";
+import * as Utility from "./utility";
+
 import Crypto from "crypto";
 import Express from "express";
 import ExpressSession from "express-session";
 import ExpressWs from "express-ws";
+import { handleWebSocket } from "./websocket";
 
 //prepare app
 const app = Express();
@@ -18,6 +22,10 @@ if (app.get("env") === "production") {
   sessionConfig.cookie.secure = true; // serve secure cookies
 }
 app.use(ExpressSession(sessionConfig));
+export interface Session {
+  username?: Users.Username;
+}
+export const sessionData = new Map<string, Session>();
 
 //websocket
 ExpressWs(app);
@@ -25,14 +33,23 @@ ExpressWs(app);
 const expressApp: ExpressWs.Application = app as any;
 
 //listen to ws
-expressApp.ws("/", (ws) => {
-  ws.on("message", (data) => {
-    console.log(data);
-    ws.send(`You said: "${data}"`);
-  });
+expressApp.ws("/", (ws, req) => {
+  //@ts-ignore
+  handleWebSocket(ws, sessionData.get(req.session.uuid));
 });
 
 //route
+app.use("/", (req, res, next) => {
+  //@ts-ignore
+  if (req.session.uuid) return next();
+
+  const uuid: string = Utility.uuid();
+  //@ts-ignore
+  req.session.uuid = uuid;
+  sessionData.set(uuid, {});
+
+  next();
+});
 app.use("/", Express.static("frontend"));
 
 app.listen(8000);

@@ -6,6 +6,8 @@ export type Username = string;
 export enum Result {
   OK,
 
+  ErrMissingData,
+
   ErrWrongPassword,
   ErrUsernameTaken,
   ErrUsernameNoExist,
@@ -32,10 +34,19 @@ export async function signIn(
   password: string
 ): Promise<Result> {
   const userAccount: UserAccount | undefined = users.get(username);
-  if (!userAccount) return Result.ErrUsernameNoExist;
+  if (!userAccount)
+    return Utility.errorAndReturn(
+      "user does not exist",
+      Result.ErrUsernameNoExist
+    );
 
-  const reference: string = await Utility.hash(password);
-  if (reference != userAccount.hashedPassword) return Result.ErrWrongPassword;
+  const isCorrect: boolean = await Bun.password.verify(
+    password,
+    userAccount.hashedPassword
+  );
+  console.log(isCorrect, userAccount.hashedPassword);
+  if (!isCorrect)
+    return Utility.errorAndReturn("password wrong", Result.ErrWrongPassword);
 
   return Result.OK;
 }
@@ -45,8 +56,12 @@ export async function signUp(
   alias: string,
   password: string
 ): Promise<Result> {
-  if (users.has(username)) return Result.ErrUsernameTaken;
-  if (Utility.checkIsEmail(username) == false) return Result.ErrNoValidEmail;
+  if (!(username && alias && password))
+    return Utility.errorAndReturn("missing data", Result.ErrMissingData);
+
+  if (users.has(username))
+    return Utility.errorAndReturn("name taken", Result.ErrUsernameTaken);
+  //TODO if (Utility.checkIsEmail(username) == false) return Result.ErrNoValidEmail;
 
   const hashedPassword: string = await Utility.hash(password);
   const newAccount: UserAccount = {
