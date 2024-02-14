@@ -1,3 +1,9 @@
+@media (max-width: 34rem) {
+  header .names {
+    display: none;
+  }
+}
+
 /* General */
 body {
   margin: 0;
@@ -32,6 +38,11 @@ main[visible] {
   display: unset;
 }
 
+ul,
+li {
+  margin: var(--spacing-04) 0px;
+}
+
 /* Sign in/up */
 main#sign-in,
 main#sign-up {
@@ -49,12 +60,17 @@ main#sign-up label {
   width: 100%;
 }
 
-/* Direct question */
+/* Question */
+main#question h1 {
+  font-size: 3rem;
+}
+
+/* Tiles */
 main#tiles {
   max-width: unset;
 }
 
-main#tiles .grid {
+main#tiles .grid, .grid.pt {
   grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
 }
 

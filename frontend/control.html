@@ -1,0 +1,38 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Control</title>
+
+    <link rel="stylesheet" href="base.css" />
+    <link rel="stylesheet" href="customization.css" />
+
+    <script src="utility.js" defer></script>
+    <script src="control.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <span class="product">Media Literacy and Digital Safety</span>
+      <span class="names">Control</span>
+    </header>
+    <main id="loading" class="hero" visible>
+        <h1>Just a second...</h1>
+      </main>
+    <main id="control" class="hero">
+      <div class="grid">
+        <div class="tile clickable" onclick="start()">
+            <h2>Start</h2>
+            <p>Start the presentation</p>
+          </div>
+        <div class="tile clickable" onclick="clickNext()">
+          <h2>Next</h2>
+          <p id="next-description">Not started</p>
+        </div>
+        <div class="tile clickable" onclick="clickPrev()">
+          <h2>Previous</h2>
+          <p id="prev-description">Not started</p>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

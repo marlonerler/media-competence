@@ -1,3 +1,15 @@
+function navTo(id) {
+  const current = document.querySelector("main[visible]");
+  if (current) {
+    current.removeAttribute("visible");
+  }
+
+  const target = document.getElementById(id);
+  target.style.animation = 'none'
+  target.setAttribute("visible", "")
+  setTimeout(() => target.style.animation = '', 10)
+}
+
 function getValue(id) {
   const element = document.getElementById(id);
   if (!element) return "";

@@ -41,7 +41,7 @@ main {
 }
 
 .error-text {
-  animation: shake .3s;
+  animation: shake 0.3s;
 }
 
 /*
@@ -51,6 +51,10 @@ main {
 body {
   background-color: var(--background);
   color: var(--text-primary);
+}
+
+a {
+  color: var(--link-primary);
 }
 
 :root {
@@ -303,7 +307,7 @@ body {
 
 .error-text {
   color: var(--text-error);
-  font-size: .8rem;
+  font-size: 0.8rem;
   display: block;
   margin-bottom: var(--spacing-06);
 }
@@ -509,9 +513,9 @@ hr {
   background-color: var(--layer-02);
 }
 .meter-track .meter-bar {
-    height: 100%;
-    background-color: var(--interactive);
-    transition: width .2s;
+  height: 100%;
+  background-color: var(--interactive);
+  transition: width 0.2s;
 }
 
 .tile {
@@ -558,8 +562,10 @@ main {
   padding: var(--spacing-07) var(--spacing-05);
 }
 
-main.hero {
-  padding-top: var(--spacing-13);
+@media (min-width: 32rem) {
+  main.hero {
+    padding-top: var(--spacing-13);
+  }
 }
 
 .justify {

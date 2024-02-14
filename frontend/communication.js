@@ -19,16 +19,9 @@ function handleMessage(message) {
       return handleSignUpResponse(rest);
     case "sign-in":
       return handleSignInResponse(rest);
+    case "slide":
+      return handleSlideChange(rest);
   }
-}
-
-function navTo(id) {
-  const current = document.querySelector("main[visible]");
-  if (current) {
-    current.removeAttribute("visible");
-  }
-
-  document.getElementById(id).setAttribute("visible", "");
 }
 
 function signUp() {
@@ -110,10 +103,7 @@ function handleSignInResponse(rest) {
       );
       return navTo("sign-in");
     case "err-password":
-      showText(
-        "err-sign-in",
-        "Double-check your password"
-      );
+      showText("err-sign-in", "Double-check your password");
       return navTo("sign-in");
     case "err":
       showText("err-sign-in", "Something went wrong");
@@ -122,4 +112,15 @@ function handleSignInResponse(rest) {
       showText("welcome-heading", `Hi, ${rest[1]}!`);
       return navTo("welcome");
   }
+}
+
+function handleSlideChange(rest) {
+  const obj = JSON.parse(rest[2]);
+  
+  const {mainId, contents} = obj;
+  navTo(mainId);
+  Object.entries(contents).forEach(entry => {
+    const [id, content] = entry;
+    document.getElementById(id).innerHTML = content;
+  })
 }

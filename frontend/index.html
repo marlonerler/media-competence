@@ -2,24 +2,27 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Media Literacy | Interactive Presentation</title>
+    <title>Media Literacy and Digital Safety</title>
 
     <link rel="stylesheet" href="base.css" />
     <link rel="stylesheet" href="customization.css" />
 
-    <script src="utlility.js" defer></script>
+    <script src="utility.js" defer></script>
     <script src="communication.js" defer></script>
   </head>
   <body>
     <header>
-      <span class="product">Media Literacy</span>
+      <span class="product">Media Literacy and Digital Safety</span>
       <span class="names">By Florian, Arne, Mark, and Marlon</span>
     </header>
 
+    <main id="loading" class="hero" visible>
+      <h1>Just a second...</h1>
+    </main>
+
     <main id="welcome" class="hero">
-      <h1 id="welcome-heading">You're in!</h1>
+      <h1 id="welcome-heading">Hello!</h1>
       <p>
-        You're in!<br>
         This page will be updated automatically.
       </p>
     </main>
@@ -32,10 +35,6 @@
       </p>
     </main>
 
-    <main id="loading" class="hero" visible>
-      <h1>Just a second...</h1>
-    </main>
-
     <main id="sign-up" class="hero">
       <h1>Hi there!</h1>
       <p class="secondary">
@@ -45,19 +44,19 @@
       <br />
       <label>
         E-mail
-        <input id="sign-up-email" placeholder="janedoe@gmail.com" />
+        <input id="sign-up-email" value="janedoe@gmail.com" />
       </label>
       <span hidden class="error-text" id="err-sign-up-email"></span>
       <label>
         Name
-        <input id="sign-up-alias" placeholder="Jane Doe" />
+        <input id="sign-up-alias" value="Jane Doe" />
       </label>
       <hr />
       <label>
         Password
         <input
           id="sign-up-password-1"
-          placeholder="***************"
+          value="***************"
           type="password"
         />
       </label>
@@ -65,7 +64,7 @@
         Confirm password
         <input
           id="sign-up-password-2"
-          placeholder="***************"
+          value="***************"
           type="password"
         />
       </label>
@@ -109,8 +108,19 @@
       <p id="basic-content-body" class="secondary">Just one second...</p>
     </main>
 
+
+    <main id="question" class="hero">
+      <h1 id="question-text">Anyone there?</h1>
+    </main>
+
+    <main id="basic-task" class="hero">
+      <h1 id="task-text">Give us 15 points.</h1>
+      <div id="task-div"></div>
+    </main>
+
     <main id="tiles">
       <h1 id="tile-headline">Look at my tiles!</h1>
+      <p id="tile-text">woooow</p>
       <div id="tile-body" class="grid">
         <div class="tile">
           <h2>This is a tile.</h2>
@@ -161,10 +171,6 @@
           <p>And some text could go here.</p>
         </div>
       </div>
-      <hr />
-      <div class="justify right">
-        <button class="primary">Done</button>
-      </div>
     </main>
 
     <main id="summary">
@@ -175,12 +181,6 @@
       <hr />
       <h2>E-Mails</h2>
       <div id="email-grid" class="grid">
-        <div class="tile">
-          <p class="code-01">ja******@gmail.com</p>
-        </div>
-        <div class="tile">
-          <p class="code-01">ja******@gmail.com</p>
-        </div>
         <div class="tile">
           <p class="code-01">ja******@gmail.com</p>
         </div>
