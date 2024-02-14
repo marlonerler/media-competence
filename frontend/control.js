@@ -1,5 +1,5 @@
 try {
-  const address = `ws://${window.location.hostname}:${window.location.port}`;
+  const address = `wss://${window.location.hostname}:${window.location.port}`;
   window.ws = new WebSocket(address);
 
   ws.onopen = () => {
