@@ -88,6 +88,7 @@ function signUp(username, alias, password) {
             hashedPassword,
         };
         exports.users.set(username, newAccount);
+        console.log(newAccount);
         return Result.OK;
     });
 }

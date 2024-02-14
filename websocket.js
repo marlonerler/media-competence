@@ -99,12 +99,13 @@ function handleSignUp(data, rest) {
     });
 }
 function handleSignIn(data, rest) {
+    var _a;
     return __awaiter(this, void 0, void 0, function* () {
         const result = yield Users.signIn(...rest);
         switch (result) {
             case Users.Result.OK:
                 data.username = rest[0];
-                return `ok\n${rest[1]}`;
+                return `ok\n${(_a = Users.users.get(data.username)) === null || _a === void 0 ? void 0 : _a.alias}`;
             case Users.Result.ErrUsernameNoExist:
                 return "err-no-user";
             case Users.Result.ErrWrongPassword:

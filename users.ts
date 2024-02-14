@@ -81,6 +81,7 @@ export async function signUp(
     hashedPassword,
   };
   users.set(username, newAccount);
+  console.log(newAccount);
 
   return Result.OK;
 }

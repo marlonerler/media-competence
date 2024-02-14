@@ -83,7 +83,7 @@ async function handleSignIn(
   switch (result) {
     case Users.Result.OK:
       data.username = rest[0];
-      return `ok\n${rest[1]}`;
+      return `ok\n${Users.users.get(data.username)?.alias}`;
     case Users.Result.ErrUsernameNoExist:
       return "err-no-user";
     case Users.Result.ErrWrongPassword:
