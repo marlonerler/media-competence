@@ -14,10 +14,6 @@ export enum Result {
   ErrNoValidEmail,
 }
 
-export interface Session {
-  username: Username;
-  alias: string;
-}
 export interface UserAccount {
   username: Username;
   hashedPassword: string;
@@ -25,7 +21,6 @@ export interface UserAccount {
 }
 
 //tracking
-export const sessions = new Map<Username, Session>();
 export const users = new Map<Username, UserAccount>();
 export const passwordStat = {
   long: 0,
@@ -116,4 +111,8 @@ export function addEmail(email: string): void {
     .join("");
   const protectedEmail = `${protectedName}@${domain}`;
   emails.push(protectedEmail);
+}
+
+export function getAlias(username: string): string | undefined {
+  return users.get(username)?.alias;
 }

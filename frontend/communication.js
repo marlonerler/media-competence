@@ -115,7 +115,7 @@ function handleSignInResponse(rest) {
 }
 
 function handleSlideChange(rest) {
-  const obj = JSON.parse(rest[2]);
+  const obj = JSON.parse(rest[0]);
   
   const {mainId, contents} = obj;
   navTo(mainId);

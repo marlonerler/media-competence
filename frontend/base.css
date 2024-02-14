@@ -528,9 +528,9 @@ hr {
 .tile.clickable:active {
   background-color: var(--layer-active-01);
 }
-.tile.selected {
+.tile[selected] {
   background: var(--layer-selected-01);
-  border: var(--spacing-01) solid var(--border-interactive);
+  outline: var(--spacing-01) solid var(--border-interactive);
 }
 .tile h2,
 .tile p {

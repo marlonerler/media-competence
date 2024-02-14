@@ -1,4 +1,4 @@
-import * as Users from './users'
+import * as Users from "./users";
 
 export const persuasionTechniques = [
   [
@@ -40,44 +40,62 @@ export const persuasionTechniques = [
   ],
 ];
 
-export const quotes: [string, string, number[]][] = [
+export const quotes: [string, number[]][] = [
   [
     "Eco-warrior Greta Thunberg given final warning to move during London protest before she was arrested for staying put.",
-    "greta thunberg",
     [5, 1, 0, 9],
   ],
   [
     "It is extraordinary that the current Government only plans to raise spending on our military to 2.5 per cent of GDP and cannot say when that will happen. If war is imminent we need to spend the money now.",
-    "gov spending war",
     [5, 9, 3, 6],
   ],
   [
     "It is extraordinary that the current Government only plans to raise spending on our military to 2.5 per cent of GDP and cannot say when that will happen. If war is imminent we need to spend the money now.",
-    "gov spending war",
     [7, 9, 3, 6],
   ],
   [
     "The conflict in the Middle East has escalated from the Gaza Strip to neighboring countries, Russia invaded Ukraine two years ago and China has threatened to attack Taiwan. So it is understandable that people are alarmed by the news that Britain’s flagship £3.5billion aircraft carrier HMS Queen Elizabeth will not be able to join Nato’s largest military exercise in Europe since the end of the Cold War due to corrosion on a coupling on the starboard propeller shaft.",
-    "conflicts, uk ship",
     [9, 3, 2, 4],
   ],
   [
     "A group of 12 former officers said: 'With Islamism and other extremism rampant, this policy is nothing short of dangerous madness'.",
-    "extremism, policy",
     [8, 6, 4, 2],
   ],
   [
     "But these policies would drag Britain back to the industrial mayhem of the 1970s, kill off any chance of growth and leave the economy at the mercy of the union barons.",
-    "uk industrial mayhem",
     [2, 5, 1, 3],
   ],
 ];
 
 export const passwordTileCriteria: [string, string, () => number][] = [
-  ["Length", "Passwords longer than 12 characters", () => Users.passwordStat.long],
-  ["Lowercase Letters", "Passwords with a lowercase letter or more", () => Users.passwordStat.lower],
-  ["Upper Letters", "Passwords with an uppercase letter or more", () => Users.passwordStat.upper],
-  ["Numbers", "Passwords with a number or more", () => Users.passwordStat.number],
-  ["Symbols", "Passwords with a symbol or more", () => Users.passwordStat.symbol],
-  ["Arbitrary", "Passwords without sequences", () => Users.passwordStat.noSequence],
+  [
+    "Length",
+    "Passwords longer than 12 characters",
+    () => Users.passwordStat.long,
+  ],
+  [
+    "Lowercase Letters",
+    "Passwords with a lowercase letter or more",
+    () => Users.passwordStat.lower,
+  ],
+  [
+    "Upper Letters",
+    "Passwords with an uppercase letter or more",
+    () => Users.passwordStat.upper,
+  ],
+  [
+    "Numbers",
+    "Passwords with a number or more",
+    () => Users.passwordStat.number,
+  ],
+  [
+    "Symbols",
+    "Passwords with a symbol or more",
+    () => Users.passwordStat.symbol,
+  ],
+  [
+    "Arbitrary",
+    "Passwords without sequences",
+    () => Users.passwordStat.noSequence,
+  ],
 ];

@@ -5,25 +5,15 @@ import * as Ws from "./websocket";
 export let currentSlideIndex: number = 0;
 
 export interface Slide {
-  description: string;
   mainId: string;
   contents: { [key: string]: string };
 }
 
+export let answers: { [key: string]: Set<string> } = {};
+
 export const slides: (() => Slide)[] = [
   () => {
     return {
-      description: "summary",
-      mainId: "summary",
-      contents: {
-        "email-grid": Components.emailTiles(),
-        "password-grid": Components.passwordTiles(),
-      },
-    };
-  },
-  () => {
-    return {
-      description: "What to check in general (question to students)",
       mainId: "question",
       contents: {
         "question-text": "What would you check before reading an article?",
@@ -32,7 +22,6 @@ export const slides: (() => Slide)[] = [
   },
   () => {
     return {
-      description: "What to check in general (solutions on publisher)",
       mainId: "basic-content",
       contents: {
         "basic-content-headline": "Checking Sources: Fundamentals",
@@ -53,7 +42,6 @@ export const slides: (() => Slide)[] = [
   },
   () => {
     return {
-      description: "What to check in general (solutions on content)",
       mainId: "basic-content",
       contents: {
         "basic-content-headline": "Checking Sources: Fundamentals",
@@ -79,7 +67,6 @@ export const slides: (() => Slide)[] = [
   },
   () => {
     return {
-      description: "What to check in general (checking)",
       mainId: "basic-content",
       contents: {
         "basic-content-headline": "Checking Sources: Fundamentals",
@@ -105,7 +92,6 @@ export const slides: (() => Slide)[] = [
   },
   () => {
     return {
-      description: "What to check in general (solutions on publisher)",
       mainId: "basic-content",
       contents: {
         "basic-content-headline": "Checking Sources: Fundamentals",
@@ -126,22 +112,26 @@ export const slides: (() => Slide)[] = [
   },
   () => {
     return {
-      description: "Persuasion Techniques",
       mainId: "tiles",
       contents: {
         "tile-headline": "Persuasion Techniques",
         "tile-text":
-          "This is only a selection of the most relevant persuastion techniques,",
+          "This is only a selection of the most relevant persuastion techniques.",
         "tile-body": Components.persuastionTiles(),
       },
     };
   },
-  ...CurriculumData.quotes.map(
-    (x) => () => Components.quoteSlide(x[0], x[1], x[2])
-  ),
+  ...CurriculumData.quotes
+    .map((x) => [
+      () => {
+        resetAnswers();
+        return Components.quoteSlide(x[0], x[1]);
+      },
+      () => Components.answerStatSlide(x[0]),
+    ])
+    .flat(),
   () => {
     return {
-      description: "Full article",
       mainId: "basic-task",
       contents: {
         "task-text":
@@ -157,7 +147,6 @@ export const slides: (() => Slide)[] = [
   },
   () => {
     return {
-      description: "cyberattack question",
       mainId: "question",
       contents: {
         "question-text":
@@ -167,7 +156,6 @@ export const slides: (() => Slide)[] = [
   },
   () => {
     return {
-      description: "cyberattack solution",
       mainId: "basic-content",
       contents: {
         "basic-content-headline": "Identifying Cyberattacks",
@@ -189,7 +177,6 @@ export const slides: (() => Slide)[] = [
   },
   () => {
     return {
-      description: "link example",
       mainId: "basic-content",
       contents: {
         "basic-content-headline": "Dangerous links",
@@ -205,7 +192,6 @@ export const slides: (() => Slide)[] = [
   },
   () => {
     return {
-      description: "cyberattack solution",
       mainId: "basic-content",
       contents: {
         "basic-content-headline": "Preventing Cyberattacks",
@@ -215,6 +201,15 @@ export const slides: (() => Slide)[] = [
         <li>Caution when sharing data</li>
         <li>Always use different passwords</li>
       </ul>`,
+      },
+    };
+  },
+  () => {
+    return {
+      mainId: "summary",
+      contents: {
+        "email-grid": Components.emailTiles(),
+        "password-grid": Components.passwordTiles(),
       },
     };
   },
@@ -229,10 +224,10 @@ export function fetch(): string {
   const currentSlide: Slide = slides[currentSlideIndex]();
   const stringified: string = JSON.stringify(currentSlide);
 
-  
-
   return `slide
-  ${"nextDescription"}
-  ${"prevDescription"}
   ${stringified}`;
+}
+
+function resetAnswers() {
+  answers = {};
 }

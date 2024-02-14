@@ -1,6 +1,7 @@
 import * as Curriculum from "./curriculum";
 import * as CurriculumData from "./curriculumData";
 import * as Users from "./users";
+import * as Utility from "./utility";
 
 export function persuasionTile(title: string, body: string): string {
   return `<div class="tile">
@@ -16,14 +17,9 @@ export function persuastionTiles(): string {
     .join("\n");
 }
 
-export function quoteSlide(
-  quote: string,
-  description: string,
-  options: number[]
-): Curriculum.Slide {
+export function quoteSlide(quote: string, options: number[]): Curriculum.Slide {
   return {
     mainId: "quotes",
-    description,
     contents: {
       "quote-body": quote,
       "quote-task": "Select all persuasion techniques you find in this quote.",
@@ -34,7 +30,7 @@ export function quoteSlide(
 
 export function quotePTOption(index: number): string {
   const data = CurriculumData.persuasionTechniques[index];
-  return `<div class="tile clickable">
+  return `<div class="tile clickable" onclick="selectTile(this, '${CurriculumData.persuasionTechniques[index][0]}')">
     <h2>${data[0]}</h2>
     <p>${data[1]}</p>
   </div>`;
@@ -73,4 +69,31 @@ export function passwordTiles(): string {
   return CurriculumData.passwordTileCriteria
     .map((x) => passwordTile(x[0], x[1], x[2]()))
     .join("\n");
+}
+
+export function answerStatSlide(question: string): Curriculum.Slide {
+  return {
+    mainId: "answer-statistics",
+    contents: {
+      "answer-statistics-title": question,
+      "answer-statistics-grid": answerStatTiles(),
+    },
+  };
+}
+
+export function answerStatTiles() {
+  return Object.keys(Curriculum.answers)
+    .sort((a, b) => Curriculum.answers[b].size - Curriculum.answers[a].size)
+    .map((x) => answerStatTile(x))
+    .join("\n");
+}
+
+export function answerStatTile(key: string): string {
+  const names: string[] = [...Curriculum.answers[key].values()];
+  const summary = Utility.summarizeArray(names);
+
+  return `<div class="tile">
+    <h2>${key}</h2>
+    <p class="secondary">${summary}</p>
+  </div>`;
 }

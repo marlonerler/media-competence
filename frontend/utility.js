@@ -5,9 +5,9 @@ function navTo(id) {
   }
 
   const target = document.getElementById(id);
-  target.style.animation = 'none'
-  target.setAttribute("visible", "")
-  setTimeout(() => target.style.animation = '', 10)
+  target.style.animation = "none";
+  target.setAttribute("visible", "");
+  setTimeout(() => (target.style.animation = ""), 10);
 }
 
 function getValue(id) {
@@ -33,4 +33,11 @@ function showText(id, text) {
   show(id);
   if (!element) return;
   element.innerText = text;
+}
+
+function selectTile(tile, message) {
+  tile.toggleAttribute("selected");
+  ws.send(`select
+${message}
+${tile.hasAttribute("selected")}`);
 }

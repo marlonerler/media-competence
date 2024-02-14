@@ -14,9 +14,6 @@ function handleMessage(message) {
   const [channel, ...rest] = message.data.split("\n");
   console.log(channel, rest);
   if (channel != "slide") return;
-
-  showText("next-description", rest[0]);
-  showText("prev-description", rest[1]);
 }
 
 function start() {

@@ -51,6 +51,9 @@ async function handleMessage(
     case "control-prev":
       Curriculum.move(-1);
       return "";
+    case "select":
+      handleSelect(data, rest);
+      return "";
     default:
       return "";
   }
@@ -87,5 +90,16 @@ async function handleSignIn(
       return "err-password";
     default:
       return "err";
+  }
+}
+
+function handleSelect(data: Session, rest: string[]) {
+  const [key, isChecked] = rest;
+  const alias: string = Users.getAlias(data.username ?? "") ?? "Unknown";
+  if (!Curriculum.answers[key]) Curriculum.answers[key] = new Set<string>();
+  if (isChecked) {
+    Curriculum.answers[key].add(alias);
+  } else {
+    Curriculum.answers[key].delete(alias);
   }
 }
