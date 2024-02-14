@@ -6,7 +6,15 @@ export interface Stringifiable {
 
 export async function hash(input: string): Promise<string> {
   if (!input) return "";
-  return await Bun.password.hash(input);
+  return Crypto.createHash("md5").update(input).digest("hex");
+}
+
+export async function compareHash(
+  input: string,
+  referenceHash: string
+): Promise<boolean> {
+  const newHash = await hash(input);
+  return newHash == referenceHash;
 }
 
 export function checkIsEmail(input: string): boolean {

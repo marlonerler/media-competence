@@ -45,7 +45,7 @@ export async function signIn(
       Result.ErrUsernameNoExist
     );
 
-  const isCorrect: boolean = await Bun.password.verify(
+  const isCorrect: boolean = await Utility.compareHash(
     password,
     userAccount.hashedPassword
   );
