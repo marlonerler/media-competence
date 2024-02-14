@@ -32,7 +32,7 @@ function signUp() {
 
   if (/^(\w+)\@(\w+)\.(\w+)$/.test(email) == false) {
     showText("err-sign-up-email", "Please enter your e-mail address");
-    //return;
+    return;
   }
   hide("err-sign-up-email");
 
@@ -81,7 +81,7 @@ function signIn() {
 
   if (/^(\w+)\@(\w+)\.(\w+)$/.test(email) == false) {
     showText("err-sign-in", "Please enter your e-mail address");
-    //return;
+    return;
   }
   hide("err-sign-in");
 

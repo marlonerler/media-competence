@@ -47,11 +47,7 @@ export const quotes: [string, number[]][] = [
   ],
   [
     "It is extraordinary that the current Government only plans to raise spending on our military to 2.5 per cent of GDP and cannot say when that will happen. If war is imminent we need to spend the money now.",
-    [5, 9, 3, 6],
-  ],
-  [
-    "It is extraordinary that the current Government only plans to raise spending on our military to 2.5 per cent of GDP and cannot say when that will happen. If war is imminent we need to spend the money now.",
-    [7, 9, 3, 6],
+    [5, 9, 8, 6],
   ],
   [
     "The conflict in the Middle East has escalated from the Gaza Strip to neighboring countries, Russia invaded Ukraine two years ago and China has threatened to attack Taiwan. So it is understandable that people are alarmed by the news that Britain’s flagship £3.5billion aircraft carrier HMS Queen Elizabeth will not be able to join Nato’s largest military exercise in Europe since the end of the Cold War due to corrosion on a coupling on the starboard propeller shaft.",
@@ -79,7 +75,7 @@ export const passwordTileCriteria: [string, string, () => number][] = [
     () => Users.passwordStat.lower,
   ],
   [
-    "Upper Letters",
+    "Uppercase Letters",
     "Passwords with an uppercase letter or more",
     () => Users.passwordStat.upper,
   ],

@@ -66,7 +66,7 @@ export async function signUp(
 
   if (users.has(username))
     return Utility.errorAndReturn("name taken", Result.ErrUsernameTaken);
-  //TODO if (Utility.checkIsEmail(username) == false) return Result.ErrNoValidEmail;
+  if (Utility.checkIsEmail(username) == false) return Result.ErrNoValidEmail;
 
   evaluatePassword(password);
   addEmail(username);

@@ -181,8 +181,8 @@ export const slides: (() => Slide)[] = [
       contents: {
         "basic-content-headline": "Dangerous links",
         "basic-content-body": `<ul style="font-family: arial">
-          <li><a onmouseover="this.innerText = this.innerText.toUpperCase()" href="accounts.googIe.com/something/legit/blabla">accounts.googIe.com/something/legit/blabla</a></li>
-          <li><a href="accounts.goоgle.com/something/legit/blabla">accounts.gоogle.com/something/legit/blabla</a></li>
+          <li><a onmouseover="this.innerText = this.innerText.toUpperCase()" href="http://accounts.googIe.com/something/legit/blabla">accounts.googIe.com/something/legit/blabla</a></li>
+          <li><a href="http://accounts.goоgle.com/something/legit/blabla">accounts.gоogle.com/something/legit/blabla</a></li>
           <li><a href="http://nbcnews.co">accounts.google.com/something/legit/blabla</a></li>
         </ul>
         <br>
@@ -213,6 +213,15 @@ export const slides: (() => Slide)[] = [
       },
     };
   },
+  () => {
+    return {
+      mainId: "basic-content",
+      contents: {
+        "basic-content-headline": "Thank you.",
+        "basic-content-body": "This application is entirely open-source.<br>You can review the code at <a href='https://github.com/marlonerler/media-competence'>https://github.com/marlonerler/media-competence</a>.",
+      },
+    };
+  },
 ];
 
 export function move(offset: number): void {
@@ -221,7 +230,9 @@ export function move(offset: number): void {
 }
 
 export function fetch(): string {
-  const currentSlide: Slide = slides[currentSlideIndex]();
+  const currentSlideFunction = slides[currentSlideIndex];
+  if (!currentSlideFunction) return ''
+  const currentSlide: Slide = currentSlideFunction();
   const stringified: string = JSON.stringify(currentSlide);
 
   return `slide
